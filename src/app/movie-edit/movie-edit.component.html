@@ -1,3 +1,29 @@
-<p>
-  movie-edit works!
-</p>
+<mat-card>
+  <form (submit)="onEditPost(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="movieTitle"
+        ngModel={{post.movieTitle}}
+        required
+        #title="ngModel"
+        >
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="4"
+        name="movieDescription"
+        ngModel={{post.movieDescription}}
+        required
+        #content="ngModel">
+      </textarea>
+      <mat-error *ngIf="content.invalid">Please enter a movie title.</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">Update Movie</button>
+  </form>
+</mat-card>
